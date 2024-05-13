@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: left;
-  padding: 15px;
+  padding: 10px;
   max-width: 600px;
 }
 .container{
@@ -15,6 +15,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 10px;
+  
   
 
 }
@@ -42,12 +43,11 @@ span{
 #expense-form{
   display: flex;
   flex-direction: row;
-  /* grid-template-columns: repeat( minmax(200px, 1fr)); */
+
   padding: 10px;
   gap: 10px;
   background: whitesmoke;
   height: 300px;
-  /* width: 400px; */
   margin-top: 20px;
 
 }
@@ -114,11 +114,11 @@ button:hover{
   left: 57%;
   transform: translate(-50%,-50%);
   
-
 }
 
 table{
   width: inherit;
+  margin-bottom: 3px;
 
 }
 tr{
@@ -132,7 +132,7 @@ td{
   border-radius: 2px;
   cursor: pointer;
   border: 1px solid black;
-  margin:5px
+  padding: 3px
 }
 th{
   background: blueviolet;
@@ -144,9 +144,11 @@ th{
 
 td.food{
   background-color: #4b0886;
+  margin-bottom: 4px;
 }
 td.transport{
   background-color: #DEB2FF;
+  margin-bottom: 4px;
 }
 
 td.housing{
@@ -189,28 +191,28 @@ td.clothing{
     font-weight: 600;
   
   }
-
-  #expense-form{
-    width: 500px;
-    padding:5px;
-    display: grid;
-    grid-template-columns: repeat(1,auto);
-    height:400px;
+ 
+  input, select{
+    
+   width: 320px;
+   margin-bottom: 4px;
+  
   }
-  input, select {
-    background-color:   #f2f2f2;
-    border-radius: 3px;
-    outline: none;
-    padding: 0px 0px;
-   
-    border: 1px solid gray;
-  
-  
+
+  .button {
+    width: 320px;
+
   }
 
   img{
     display: none
   }
+  .table-container{
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    
+    }
   
 }
 
