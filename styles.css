@@ -10,7 +10,11 @@
   max-width: 600px;
 }
 .container{
-  display:flex;
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
   
 
 }
@@ -34,22 +38,16 @@ span{
   font-weight: 800;
 
 }
-/* form{
-  display:flex;
-  flex-direction: column;
-  gap:20px;
-  padding-top: 25px;
-  margin-top: 10px;
-} */
 
 #expense-form{
-  display: grid;
-  grid-template-columns: repeat(2,auto);
+  display: flex;
+  flex-direction: row;
+  /* grid-template-columns: repeat( minmax(200px, 1fr)); */
   padding: 10px;
   gap: 10px;
   background: whitesmoke;
   height: 300px;
-  width: 800px;
+  /* width: 400px; */
   margin-top: 20px;
 
 }
@@ -60,8 +58,10 @@ input, select {
   border-radius: 3px;
   outline: none;
   padding: 12px 20px;
- 
+  width: 400px;
   border: 1px solid gray;
+  margin-bottom: 8px;
+  margin-left: 20px
 
 
 }
@@ -81,15 +81,16 @@ input:focus, select:focus{
   background-color: #FEE9D5;
 }
 
-button{
+.button{
   background-color: #DEB2FF;
   border-radius: 3px;
   border: none;
   padding: 12px 30px;
-  width: 100%; 
- cursor: pointer;
- color: rgb(52, 50, 50);
- font-size: 18px;
+  width: 400px; 
+  cursor: pointer;
+  color: rgb(52, 50, 50);
+  font-size: 18px;
+  margin-left: 20px;
  
 }
 button:hover{
@@ -98,11 +99,11 @@ button:hover{
 }
 
 .table-container{
-  background-color: blue;
-  height: 225px;
-  width: 800px;
-  overflow: auto;
-  overflow-x: auto;
+  background-color: #4b0886;
+  height: 300px;
+  width: 500px;
+   overflow: auto;
+  overflow-x: auto; 
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -110,7 +111,7 @@ button:hover{
   box-shadow: 0 0 12px rgba(0,0,0,0.15);
   position: absolute;
   top: 65%;
-  left: 66%;
+  left: 57%;
   transform: translate(-50%,-50%);
   
 
@@ -121,7 +122,7 @@ table{
 
 }
 tr{
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 td{
   text-align: center;
@@ -131,6 +132,7 @@ td{
   border-radius: 2px;
   cursor: pointer;
   border: 1px solid black;
+  margin:5px
 }
 th{
   background: blueviolet;
@@ -148,7 +150,7 @@ td.transport{
 }
 
 td.housing{
-  background-color: aliceblue;
+  background-color: #81609e;
 }
 td.education{
   background-color: rgb(24, 82, 133);
@@ -168,11 +170,30 @@ td.clothing{
 @media screen and (max-width: 640px) {
   .title
   {
-    display: none;
+    padding: 5px;
+    max-width: 400px;
+    font-size:10px;
+   
   }
+
+  p{
+    color: gray;
+    font-weight:500;
+    text-justify: center;
+    font-size: 14px;
+  }
+  span{
+    font-family: "Italianno", cursive;
+    color: #4b0886;
+    font-size: 14px;
+    font-weight: 600;
+  
+  }
+
   #expense-form{
     width: 500px;
     padding:5px;
+    display: grid;
     grid-template-columns: repeat(1,auto);
     height:400px;
   }
@@ -185,6 +206,10 @@ td.clothing{
     border: 1px solid gray;
   
   
+  }
+
+  img{
+    display: none
   }
   
 }

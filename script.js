@@ -4,30 +4,14 @@ let amountEl = document.getElementById ("expense-amount");
 let descriptionEl = document.getElementById ("expense-description");
 let tableEl = document.getElementById ("table");
 let categoryEl = document.getElementById ("expense-category");
-let class_Name;
+let class_name;
 // Local storage array
 let expensesData = [];
-
-// Function to check for existing date data in localStorage
-
-// function checkLocalStorageForKey(key) {
-//   var value = localStorage.getItem(key);
-//   if (value === null) {
-//       console.log("No data stored in local storage for the key:", key);
-//       return false;
-//   } else {
-//       console.log("Data found in local storage for the key:", key, "Value:", value);
-//       return true;
-//   }
-// }
-
-// // Usage example to check for a date
-// checkLocalStorageForKey('date');
 
 if(localStorage.getItem('expensesData')){
   expensesData = JSON.parse(localStorage.getItem('expensesData'))
 
-  rendersTable()
+  rendersTable();
 }
 
 let inputArray = [dateEl, amountEl, descriptionEl]
@@ -35,43 +19,43 @@ let inputArray = [dateEl, amountEl, descriptionEl]
 function addExpenses(date= 'N/A', type = 'N/A', amount = 'N/A', description ='N/A'){
 
   let dateInput = new Date(dateEl.value)
-  let dateFormat = dateInput.toLocaleDateString('en-UK', {month: '2-digit', day: '2-digit', year: 'numeric'})
+  let dateFormat = dateInput.toLocaleDateString('en-US', {month: '2-digit', day: '2-digit', year: 'numeric'})
 
-    date = dateFormat
-    type =  categoryEl.value
-    amount = amountEl. value
-    description = descriptionEl.value
+    date = dateFormat;
+    type =  categoryEl.value;
+    amount = amountEl.value;
+    description = descriptionEl.value;
 
     switch (categoryEl.value) {
       case 'Food':
-        class_Name = 'food';
-        break;
-    
+          class_name = 'food';
+          break;
       case 'Transport':
-      class_Name = 'transport';
-        break;
+          class_name = 'transport';
+          break;
+      case 'Housing':
+          class_name = 'housing';
+          break;
+      case 'Education':
+          class_name = 'education';
+          break;
+      case 'Miscellaneous':
+          class_name = 'miscellaneous';
+          break;
+      case 'Clothing':
+          class_name = 'clothing';
+          break;
+      case 'Others':
+          class_name = 'others';
+          break;
+         
+  }
+  
+  console.log({date, type, amount, description, class_name});  // Debug output
 
-        case 'Housing':
-      class_Name = 'housing';
-        break;
-
-        case 'Education':
-      class_Name = 'education';
-        break;
-
-        case 'Miscellaneous':
-      class_Name = 'miscellaneous';
-        break;
-
-        case 'Others':
-      class_Name = 'others'
-        break;
-    }
-
-    expensesData.push(date, type, amount, description, class_Name)
-
+  expensesData.push({date, type, amount, description, class_name});
+  
     updateLocalStorage();
-
     rendersTable();
 
   }
@@ -82,5 +66,38 @@ function deleteExpenses(index){
 }
 
 function rendersTable(){
-    tableEl.innerHTML = `<tr>`
+    tableEl.innerHTML = `<tr>
+                          <th>Date</th>
+                          <th>Name</th>
+                          <th>Amount</th>
+                          <th>Description</th>
+                          <th>Action </th> 
+                        </tr>`
+
+    expensesData.forEach((expense,index)=>{
+        let colorCode = expense.class_name
+
+        tableEl.innerHTML += `<tr>
+        <td class="${colorCode}">${expense.date}</td>
+        <td class="${colorCode}">${expense.type}</td>
+        <td class="${colorCode}">${expense.amount}</td>
+        <td class="${colorCode}">${expense.description}</td>
+        <td class="${colorCode}"><button onclick = "deleteExpenses(${index})">Delete</button></td>
+      </tr>`;
+
+     })
 }
+
+function updateLocalStorage(){
+  localStorage.setItem('expensesData', JSON.stringify(expensesData))
+}
+
+addEl.addEventListener('click', addExpenses)
+
+
+
+  function clearLocalStorage() {
+    localStorage.clear();
+    alert('Local storage cleared.');
+  }
+
